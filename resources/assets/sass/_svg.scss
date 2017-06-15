@@ -1,0 +1,60 @@
+.route{
+  opacity: .3;
+}
+.route polyline, .route line{
+  opacity: 0;
+}
+.route.full-opacity polyline,.route.full-opacity line, .route.full-opacity{
+  opacity: 1;
+}
+.route.full-full-opacity{
+  opacity: 1;
+}
+
+.route polyline, .route line{
+  fill:none;
+  stroke-width:3;
+  stroke-linecap:round;stroke-linejoin:round;
+  stroke-dasharray:0.99,4.9501;
+}
+.route circle.active{
+  fill:none;
+  stroke-width:2;
+  stroke-miterlimit:10;
+}
+
+#percorso_full polyline, #percorso_full line, #percorso_sculpture circle.active{
+  stroke:#636b6f;
+}
+
+
+#percorso_photography polyline, #percorso_photography circle.active{
+  stroke 	: 	$brand-info;
+}
+
+#percorso_photography circle:not(.active){
+  fill 	:	$brand-info;
+}
+
+#percorso_paintings polyline, #percorso_paintings circle.active{
+  stroke:$brand-dark-gold;
+}
+
+#percorso_paintings circle:not(.active){
+  fill:$brand-dark-gold;
+}
+
+#percorso_sculpture polyline, #percorso_sculpture circle.active{
+  stroke:$brand-primary;
+}
+
+#percorso_sculpture circle:not(.active){
+  fill:$brand-primary;
+}
+
+
+.st11{fill-rule:evenodd;clip-rule:evenodd;fill:#EAEAEA;}
+
+.st12{fill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:#111111;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+.st13{fill:none;stroke:#111111;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+.st14{fill:#EAEAEA;}

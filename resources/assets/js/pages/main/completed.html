@@ -1,0 +1,30 @@
+<div class="full-page white-background grey routes opera-intro percorso-completed" ng-class="percorsoCompletedCtrl.percorso.class">
+
+    <div class="overlay" ng-show="percorsoCompletedCtrl.showOverlay" ng-click="percorsoCompletedCtrl.showOverlay = false;">
+        <div class="login-box">
+            <p>Autenticati per salvare i tuoi progressi e rimanere connesso con noi!</p>
+            <div class="navigation-icon" ui-sref="login">
+                <i class="fa fa-key"></i>
+            </div>
+        </div>
+    </div>
+
+    <img ng-src="images/{{percorsoCompletedCtrl.percorso.icon.active}}" class="percorso-icon"/>
+    <p class="completed-label">Percorso {{percorsoCompletedCtrl.percorso.label}} completato!</p>
+
+    <div class="share-icon">
+        <i class="fa fa-facebook"></i>
+    </div>
+
+    <div class="opera-share">
+        <p>Condividi l'opera che hai apprezzato di più</p>
+        <div class="opera-preview"
+             ng-repeat="opera in percorsoCompletedCtrl.percorso.nodes"
+            ng-click="percorsoCompletedCtrl.share(percorsoCompletedCtrl.pathName, $index,opera)">
+            <img ng-src="{{opera.artefacts[0].image}}" />
+        </div>
+    </div>
+    <div class="navigation-icon" ui-sref="percorsi">
+        <i class="fa fa-map-marker"></i>
+    </div>
+</div>

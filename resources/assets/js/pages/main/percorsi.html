@@ -1,0 +1,116 @@
+<div class="full-page white-background grey routes">
+    <header class="header text-center">
+		<img class="pull-left" src="/images/burger.png" ng-click="main.toggleMenu()" />
+		<span class="page-title">Percorsi</span>
+        <i class="pull-right gold fa fa-3x fa-circle" ui-sref="main"></i>
+    </header>
+	<ui-view></ui-view>
+	<div class="padding-25" ng-show="'percorsi' | isState">
+		<svg version="1.1"
+			 id="mappa"
+			 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+			 x="0px" y="0px"
+			 style="width: 100%; height: auto"
+			 preserveAspectRatio="xMinYMin"
+			 viewBox="0 0 400 300" xml:space="preserve">
+
+
+			<polyline id="ingresso" class="st0" points="390.6,55.1 384.3,61.3 390.6,68 "/>
+
+			<g id="edificio">
+				<polygon id="XMLID_141_" class="st13" points="367.9,177.5 280,177.5 280,204.6 165.8,204.2 165.8,179.3 139.8,179.3 139.8,189.8
+					10,186.9 -0.1,19.1 173.1,0.4 175.4,52.3 366.3,29.6 		"/>
+				<polyline id="XMLID_140_" class="st13" points="310.7,72.9 316.4,128.3 231.5,139.1 		"/>
+				<line id="XMLID_139_" class="st13" x1="88.6" y1="157" x2="75.8" y2="40.3"/>
+				<line id="XMLID_138_" class="st13" x1="13.3" y1="82" x2="75.4" y2="74.1"/>
+				<rect id="ufficio1" x="169.3" y="164.7" class="st14" width="107" height="36"/>
+				<rect id="stanzino" x="140.2" y="154.3" class="st14" width="22" height="21.6"/>
+				<polyline id="XMLID_135_" class="st13" points="165.8,179.3 165.7,151 138,151 		"/>
+				<polyline id="XMLID_91_" class="st12" points="175.4,52.3 116.3,59 113.7,40.4 "/>
+				<line id="XMLID_90_" class="st13" x1="108.7" y1="7.5" x2="110.7" y2="22.7"/>
+				<polygon id="XMLID_92_" class="st11" points="7.1,23.4 10.4,76.4 74.9,68.7 69.8,16.8 "/>
+			</g>
+
+
+			<g id="percorso_full" class="route" ng-class="{'full-opacity' : percorsiCtrl.getCurrentRoute() == 'full'}">
+				<line id="XMLID_63_" x1="145.5" y1="28" x2="146" y2="28"/>
+				<line x1="285.1" y1="62.6" x2="285.2" y2="63.1"/>
+				<line x1="285.8" y1="68.3" x2="289.8" y2="102.9"/>
+
+				<polyline id="XMLID_65_" class="" points="82.3,34.7 82.2,34.2 82.7,34.2 		"/>
+
+							<line id="XMLID_66_" class="" x1="94.9" y1="154.8" x2="82.5" y2="37.2"/>
+				<!--
+							<line id="XMLID_64_" class="" x1="87.5" y1="33.7" x2="143.1" y2="28.3"/>
+
+                                -->
+				<polyline points="290.1,105.5 290.2,106 289.7,106"/>
+				<line id="XMLID_98_"  x1="284.7" y1="106.6" x2="106.7" y2="126.3"/>
+				<polyline id="XMLID_97_" points="104.2,126.6 103.7,126.7 103.7,127.2 		"/>
+				<line id="XMLID_96_"  x1="104.1" y1="132.1" x2="107.3" y2="177"/>
+				<polyline id="XMLID_95_" points="107.5,179.5 107.5,180 107,180 		"/>
+				<line id="XMLID_94_"  x1="102" y1="179.9" x2="32.5" y2="178.4"/>
+				<polyline id="XMLID_82_" class="" points="30,178.3 29.5,178.3 29.5,177.8 		"/>
+				<line id="XMLID_81_" class="" x1="29.2" y1="172.9" x2="24.3" y2="98.3"/>
+				<polyline id="XMLID_80_" class="" points="24.1,95.9 24.1,95.4 24.6,95.3 		"/>
+				<line id="XMLID_79_" class="" x1="29.6" y1="94.7" x2="69.5" y2="89.6"/>
+				<polyline id="XMLID_78_" class="" points="72,89.2 72.5,89.2 72.6,89.7 		"/>
+				<line id="XMLID_77_" class="" x1="73.2" y1="94.7" x2="81.8" y2="158.5"/>
+				<polyline id="XMLID_76_" class="st0" points="82.1,161 82.2,161.5 82.7,161.5 		"/>
+				<line id="XMLID_75_" class="" x1="88.3" y1="160.9" x2="92.2" y2="160.6"/>
+				<polyline id="XMLID_74_" class="" points="95,160.3 95.5,160.2 95.4,159.8 		"/>
+
+			</g>
+			<g
+				ng-repeat="(percorsoName, percorso) in percorsiCtrl.getPercorsi()"
+				id="{{percorso.id}}"
+				class="route"
+				ng-class="{'full-opacity' : percorsiCtrl.getCurrentRoute() == percorsoName, 'full-full-opacity' : percorsiCtrl.getCurrentRoute() == 'full'}"
+			>
+				<polyline
+						ng-repeat="path in percorso.paths"
+						ng-attr-points="{{path.points}}">
+
+				</polyline>
+				<circle ng-repeat-start="artefact in percorso.nodes track by $index"
+						r="9"
+						ng-attr-cx="{{artefact.x}}"
+						ng-attr-cy="{{artefact.y}}"
+						ui-sref="percorsi.percorso({pathName : percorsoName, operaIndex : $index})"
+				></circle>
+				<circle ng-repeat-end
+						r="12"
+							class="active"
+							ng-show="percorsiCtrl.getCurrentNode() == $index && percorsiCtrl.getCurrentRoute() == percorsoName"
+						ng-attr-cx="{{artefact.x}}"
+						ng-attr-cy="{{artefact.y}}"
+				></circle>
+			</g>
+		</svg>
+		<p class="text-left" style="padding-left: 40px">Scegli un percorso</p>
+		<ul class="links text-left padding-left-35">
+			<li>
+				<a ng-click="percorsiCtrl.setCurrentRoute('full')" class="grey" ng-class="{'active' : percorsiCtrl.getCurrentRoute() == 'full'}">
+					Percorso Completo
+				</a>
+				<button
+					class="pull-right"
+					ng-show="percorsiCtrl.getCurrentRoute() == 'full'"
+					ui-sref="percorsi.percorso({pathName : 'percorso_paintings', operaIndex : 0})">
+					<i class="fa fa-play"></i>
+				</button>
+			</li>
+			<li ng-repeat="(percorsoName, percorso) in percorsiCtrl.getPercorsi()"
+				ng-click="percorsiCtrl.setCurrentRoute(percorsoName)"
+				class="{{percorso.class}}"
+				ng-class="{'active' : percorsiCtrl.getCurrentRoute() == percorsoName}">
+				<a>{{percorso.label}}</a>
+				<button class="pull-right"
+						ui-sref="percorsi.preview({pathName : percorsoName, operaIndex : 0})"
+						ng-show="percorsiCtrl.getCurrentRoute() == percorsoName">
+					<i class="fa fa-play"></i>
+				</button>
+			</li>
+		</ul>
+	</div>
+</div>

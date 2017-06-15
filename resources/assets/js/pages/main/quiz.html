@@ -1,0 +1,106 @@
+<div class="full-page white-background grey quiz" ng-class="quizCtrl.percorso.class">
+    <div ng-repeat="qz in quizCtrl.opera.quiz" ng-show="$index == quizCtrl.currentQuestion">
+
+        <p class="quiz-label" ng-bind-html="qz.question"></p>
+        <div ng-show="qz.image_tooltips">
+            <svg version="1.1"
+			 style="background: url({{qz.image_tooltips.image}}); background-size: 100%; width: 100%; height: auto"
+			 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+			 x="0px" y="0px"
+			 preserveAspectRatio="xMinYMin"
+			 viewBox="0 0 400 300" xml:space="preserve">
+                <g ng-repeat="tooltip in qz.image_tooltips.tooltips track by $index">
+                    <circle
+						r="15"
+                        style="fill: #FF00000"
+						ng-attr-cx="{{tooltip.x}}"
+						ng-attr-cy="{{tooltip.y}}"
+                        ng-click="quizCtrl.activateTooltip($parent.$index, $index)"
+                    ></circle>
+                    <g ng-show="tooltip.active">
+                        <rect
+                            class="quiz-popover"
+                            width="300"
+                            height="130"
+                            rx="15"
+                            ry="15"
+                            ng-attr-x="{{tooltip.x - 100}}"
+                            ng-attr-y="{{tooltip.y + 10 + (tooltip.y + 140 > 300 ? 300 - (tooltip.y + 140): 0)}}">
+                        </rect>
+
+                        <foreignObject
+                            style="text-align: left"
+                            ng-attr-x="{{tooltip.x - 100}}"
+                            ng-attr-y="{{tooltip.y + 10 + (tooltip.y + 140 > 300 ? 300 - (tooltip.y + 140): 0)}}"
+                            width="300"
+                            height="130">
+                            <p class="quiz-popover">
+                                <span
+                                    class="quiz-popover-title"
+                                    xmlns="http://www.w3.org/1999/xhtml"
+                                    ng-bind="tooltip.title"></span>
+                                <br />
+                                <span
+                                    class="quiz-popover-content"
+                                    xmlns="http://www.w3.org/1999/xhtml"
+                                    ng-bind-html="tooltip.description"
+                                ></span>
+                            </p>
+                        </foreignObject>
+                        <text
+                            class="close-icon"
+                            ng-attr-x="{{tooltip.x + 170}}"
+                            ng-attr-y="{{tooltip.y + 35 + (tooltip.y + 145 > 300 ? 300 - (tooltip.y + 145): 0)}}"
+                            ng-click="quizCtrl.closeTooltip($parent.$index, $index)">
+                            X
+                        </text>
+                    </g>
+                </g>
+            </svg>
+        </div>
+
+        <div class="answers">
+            <button ng-repeat="answer in qz.answers track by $index"
+                    ng-class="{'selected' : qz.selected && qz.selected.indexOf(answer) !== -1}"
+                    ng-click="quizCtrl.pickAnswer($parent.$index, answer);"
+            >{{answer}}</button>
+        </div>
+
+        <p class="quiz-label" ng-bind-html="qz.label"></p>
+
+
+        <div class="actions">
+            <button style="width: 50px; margin-top:15px;" ng-hide="qz.answers || $last" ng-click="quizCtrl.pickAnswer($index, '')">
+                <i class="fa fa-play"></i>
+            </button>
+        </div>
+
+        <div
+             ng-show="qz.type == 'drawing'">
+            <p>Trascina il dito per disegnare</p>
+            <div drawing-area color="{{quizCtrl.percorso.color}}" style="min-height: 500px; background: url({{qz.background}}); background-size: cover; background-repeat: no-repeat;"></div>
+        </div>
+
+        <div id="endingAnchor" class="ending" ng-show="$last" ng-class="{'drawing-icon' : qz.type == 'drawing'}">
+            <!--
+            <div ng-show="quizCtrl.prevOpera !== null" class="navigation-icon"
+                 ui-sref="percorsi.percorso({pathName : quizCtrl.pathName, operaIndex : quizCtrl.prevOpera})">
+                <i class="fa fa-angle-left"></i>
+            </div>
+            -->
+            <div class="navigation-icon"
+                 ui-sref="percorsi.preview({pathName : quizCtrl.pathName, operaIndex : 0})">
+                <i class="fa fa-th-large"></i>
+            </div>
+
+            <div class="navigation-icon" ng-click="quizCtrl.endQuiz()">
+                <i class="fa fa-map-marker"></i>
+            </div>
+            <div ng-show="quizCtrl.nextOpera !== null" class="navigation-icon"
+                 ng-click="quizCtrl.endQuiz()"
+                 ui-sref="percorsi.percorso({pathName : quizCtrl.pathName, operaIndex : quizCtrl.nextOpera})">
+                <i class="fa fa-angle-right"></i>
+            </div>
+        </div>
+    </div>
+</div>

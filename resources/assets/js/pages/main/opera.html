@@ -1,0 +1,57 @@
+<div class="full-page white-background grey routes opera-intro" ng-class="percorsoCtrl.percorso.class">
+
+    <img ng-src="{{percorsoCtrl.opera.image}}" style="width: 100%"/>
+
+    <div class="opera-heading white-background">
+        <div class="navigation-icon-container">
+            <!--
+            <div ng-show="percorsoCtrl.prevOpera !== null" class="navigation-icon"
+                 analytics-on="click" analytics-event="PreviousOpera"
+                 ui-sref="percorsi.percorso({pathName : percorsoCtrl.pathName, operaIndex : percorsoCtrl.prevOpera})">
+                <i class="fa fa-angle-left"></i>
+            </div>
+            -->
+            <div class="navigation-icon"
+                 analytics-on="click" analytics-event="PreviewPercorso"
+                 ui-sref="percorsi.preview({pathName : percorsoCtrl.pathName, operaIndex : 0})">
+                <i class="fa fa-th-large"></i>
+            </div>
+            <div class="navigation-icon" ui-sref="percorsi" analytics-on="click" analytics-event="BackToPercorsi">
+                <i class="fa fa-map-marker"></i>
+            </div>
+            <div ng-show="percorsoCtrl.nextOpera !== null" class="navigation-icon"
+                 analytics-on="click" analytics-event="NextOpera"
+                  ui-sref="percorsi.percorso({pathName : percorsoCtrl.pathName, operaIndex : percorsoCtrl.nextOpera})">
+                <i class="fa fa-angle-right"></i>
+            </div>
+        </div>
+        <h1 ng-class="percorsoCtrl.percorso.class">{{percorsoCtrl.opera.author}}</h1>
+        <h2 class="dark-grey">{{percorsoCtrl.opera.title}}</h2>
+        <p class="year">{{percorsoCtrl.opera.year}}</p>
+        <p class="technique">{{percorsoCtrl.opera.technique }}</p>
+        <p class="materials">{{percorsoCtrl.opera.materials}}</p>
+        <p class="dimensions">{{percorsoCtrl.opera.dimensions}}</p>
+        <div class="actions text-center" style="padding-bottom: 25px; padding-top: 25px;" ng-show="percorsoCtrl.opera.quiz">
+            <!--
+            <p class="dark-grey italic">Tempo di osservazione: {{percorsoCtrl.opera.time}}</p>
+            -->
+            <div class="quiz-starter" analytics-on="click" analytics-event="StartsInteraction"
+                 ui-sref="percorsi.quiz({pathName: percorsoCtrl.pathName, operaIndex: percorsoCtrl.operaIndex})">
+                <svg version="1.1" id="Livello_1"
+                     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 60.8 62.5"
+                     enable-background="new 0 0 60.8 62.5" xml:space="preserve">
+
+                    <g>
+                        <g>
+                            <path fill="none" stroke-width="2.2821" stroke-miterlimit="10" d="M9.6,58.7l2.4-12.4c0,0-10.4-7.8-8.4-21.5
+                                S21.1,2.6,33.3,4.3s26.1,11.7,23.1,28.6c-3,16.9-23.8,22-32.7,19L9.6,58.7z"/>
+                            <g>
+                                <text transform="matrix(1 0 0 1 21.0996 39.1424)" font-family="'ArialMT'" font-size="29.667">?</text>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </div>
+</div>

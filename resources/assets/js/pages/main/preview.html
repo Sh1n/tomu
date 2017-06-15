@@ -1,0 +1,31 @@
+<div class="full-page white-background grey routes opera-intro percorso-preview" ng-class="percorsoCtrl.percorso.class">
+    <!--
+    <div
+        ng-repeat-start="opera in percorsoCtrl.percorso.nodes"
+        style="background-image: url({{opera.artefacts[0].image}}); background-size: cover; height: 150px;"
+        class="opera-preview"
+    >
+    </div>
+    <h2 class="opera-title" ng-repeat-end="">
+        {{opera.artefacts[0].title || '&nbsp;' }}
+        <div class="navigation-icon"
+             analytics-on="click" analytics-event="OpenOpera"
+             ui-sref="percorsi.percorso({pathName : percorsoCtrl.pathName, operaIndex : $index})">
+            <i class="fa fa-angle-right" ng-hide="opera.viewed"></i>
+            <i class="fa fa-check"  ng-class="percorsoCtrl.percorso.class" ng-show="opera.viewed"></i>
+        </div>
+    </h2>
+    -->
+    <div class="opera-preview"
+         ng-repeat="opera in percorsoCtrl.percorso.nodes"
+         ui-sref="percorsi.percorso({pathName : percorsoCtrl.pathName, operaIndex : $index})"
+    >
+        <img ng-src="{{opera.artefacts[0].image}}"/>
+<!--
+        <div class="navigation-icon">
+            <i class="fa fa-angle-right" ng-hide="opera.viewed"></i>
+            <i class="fa fa-check"  ng-class="percorsoCtrl.percorso.class" ng-show="opera.viewed"></i>
+        </div>
+-->
+    </div>
+</div>

@@ -1,0 +1,72 @@
+<div class="full-page white-background grey routes achievements">
+    <header class="header text-center">
+        <img class="pull-left" src="/images/burger.png" ng-click="main.toggleMenu()" />
+        <span class="page-title">La mia visita</span>
+        <i class="pull-right gold fa fa-3x fa-circle" ui-sref="main"></i>
+    </header>
+
+    <div class="overlay" ng-show="myVisitCtrl.showOverlay" ng-click="myVisitCtrl.showOverlay = false;">
+        <div class="login-box">
+            <p>Autenticati per salvare i tuoi progressi e rimanere connesso con noi!</p>
+            <div class="navigation-icon" ui-sref="login">
+                <i class="fa fa-key"></i>
+            </div>
+        </div>
+    </div>
+
+    <div style="padding:40px">
+        <div class="row">
+            <div class="col-xs-6">
+                <gauge-chart value="myVisitCtrl.percentageCompletion" background-color="'#615192'" foreground-color="'#C3B154'"></gauge-chart>
+            </div>
+            <div class="col-xs-6 text-right">
+                <div class="number">{{myVisitCtrl.completed}}</div>
+                <div class="achievement-label">Percorsi completati</div>
+
+                <div class="number">{{myVisitCtrl.viewedOperas}}</div>
+                <div class="achievement-label">Opere viste</div>
+
+                <div class="number">{{myVisitCtrl.prizes}}</div>
+                <div class="achievement-label">Premi conquistati</div>
+
+            </div>
+            <div class="col-xs-12">
+                <svg version="1.1"
+                     id="completamento"
+                     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                     x="0px" y="0px"
+                     style="width: 100%; height: auto"
+                     preserveAspectRatio="xMinYMin"
+                     viewBox="0 0 200 100" xml:space="preserve">
+
+                    <g>
+                        <line x1="45"   y1="40" x2="80"  y2="40"></line>
+                        <line x1="120"  y1="40" x2="155" y2="40"></line>
+                    </g>
+
+                    <g ng-repeat="(pathName, percorso) in myVisitCtrl.getPercorsi()" class="{{percorso.class}}">
+                        <!--
+                        <circle ng-attr-cx="{{25 + (75 * $index)}}" cy="25" r="5" ></circle>
+                        <circle ng-attr-cx="{{25 + (75 * $index)}}" cy="25" r="8" class="active" ng-show="myVisitCtrl.isRouteActive(pathName)"></circle>
+                        -->
+                        <foreignObject
+                            style="text-align: left"
+                            ng-attr-x="{{(75 * $index) + 10}}"
+                            y="25"
+                            width="30"
+                            height="20">
+                            <img xmlns="http://www.w3.org/1999/xhtml" style="width: 30px;" ng-show="myVisitCtrl.isRouteActive(pathName)" ng-src="images/{{percorso.icon.active}}" />
+                            <img xmlns="http://www.w3.org/1999/xhtml" style="width: 30px;" ng-hide="myVisitCtrl.isRouteActive(pathName)" ng-src="images/{{percorso.icon.not_active}}" />
+                        </foreignObject>
+                    </g>
+
+                </svg>
+
+                <button ng-show="myVisitCtrl.currentPath"
+                        class="grey round-corner-15"
+                        ui-sref="percorsi.percorso({pathName : myVisitCtrl.currentPath, operaIndex : myVisitCtrl.currentOpera || 0})"
+                >Riprendi il percorso</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,841 @@
+
+// Fonts
+@import url(https://fonts.googleapis.com/css?family=Muli:300,400,500,700,400italic);
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+$fa-font-path: "../../fonts";
+// Font Awesome
+@import "node_modules/font-awesome/scss/font-awesome";
+@import "shadeGenerator";
+@import "generic";
+@import "svg";
+
+/*
+Mixin
+ */
+
+.rounded{
+  border-radius: 25px;
+}
+.rounded-18{
+  border-radius: 18px;
+}
+
+.height-36{
+  height: 36px;
+}
+
+.background-none{
+  background: none;
+}
+
+.dark-purple-border{
+  border:2px solid $brand-dark-purple;
+}
+
+.gold-outline{
+  border: 1px solid $brand-info;
+}
+
+
+.purple{
+  color: $brand-primary;
+}
+
+.purple-background-75{
+  background-color: transparentize($brand-primary, 0.25);
+}
+.purple-background{
+  background-color: transparentize($brand-white, 0);
+}
+
+.gold {
+  color: $brand-info;
+}
+.dark-gold{
+  color: $brand-dark-gold;
+}
+.grey{
+  color: $text-color;
+}
+.white {
+  color: $brand-white;
+}
+.dark-grey{
+  color: $brand-dark-grey;
+}
+a.grey{
+  color: $text-color;
+}
+
+.pt23{
+  font-size: 23pt;
+}
+
+.pt14{
+  font-size: 16pt;
+}
+
+.pt16{
+  font-size: 16pt;
+}
+
+
+.gold-background-75{
+  background-color: transparentize($brand-info, 0.15);
+}
+
+.gold-background{
+  background-color: transparentize($brand-info, 0.37);
+}
+
+.white-background{
+  background-color: $brand-white;
+}
+
+.top{
+  position  : absolute;
+  top       : calc(25px + 50px);
+}
+
+.left{
+  position  : absolute;
+  left      : 25px;
+}
+
+.no-padding{
+  padding: 0;
+}
+
+.no-padding-top{
+  padding-top: 0;
+}
+
+.page-title{
+  font-size: 16px;
+}
+
+.padding-25{
+  padding: 25px;
+}
+
+.padding-top-45{
+  padding-top: 45%;
+}
+.padding-top-65{
+  padding-top: 65%;
+}
+.padding-top-25{
+  padding-top: 25%;
+}
+
+.padding-left-45{
+  padding-left: 45px;
+}
+
+.full-width{
+  width: 100%;
+}
+.full-page{
+  height: 100%;
+  text-align: center;
+}
+
+.full-page header.header{
+  padding-top   : 25px;
+  padding-left  : 25px;
+  padding-right : 25px;
+  padding-bottom: 20px;
+}
+
+.full-page header.header .page-title{
+  height: 36px;
+  line-height: 36px;
+}
+
+.routes li.active a{
+  border-bottom: 3px dotted $text-color;
+  width: 60%;
+  text-decoration: none;
+}
+
+.routes li.active.purple a{
+  border-bottom: 3px dotted $brand-primary;
+  width: 60%;
+  text-decoration: none;
+}
+.routes li.active.gold a{
+  border-bottom: 3px dotted $brand-info;
+  width: 60%;
+  text-decoration: none;
+}
+
+li.dark-gold a {
+  color: $brand-dark-gold;
+}
+
+li.gold a{
+  color: $brand-info;
+}
+
+li.purple a{
+  color: $brand-primary;
+}
+
+body{
+  height:100%;
+  background-image: url('../../images/rsz_splash-background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: left top;
+}
+
+.font34{
+  font-size: 34px;
+}
+
+.font23{
+  font-size: 23px;
+}
+
+.font14{
+  font-size: 14px;
+}
+
+
+.no-margin{
+  margin:0;
+}
+.page-wrapper{
+  height: 100%;
+  .container{
+    height:100%;
+    padding-left: 0;
+    padding-right:0;
+  }
+}
+
+ul{
+  list-style: none;
+}
+.footer {
+  position        : absolute;
+  bottom          : 0;
+  width           : 100%;
+  padding-bottom  : 25px;
+  padding-left    : 25px;
+  padding-right   : 25px;
+}
+
+header.menubar{
+  position        : absolute;
+  top             : 0;
+  width           : 100%;
+  padding-top     : 25px;
+  padding-left    : 25px;
+  padding-right   : 25px;
+}
+.login-selector-page a, .login-page a{
+  display: block;
+  height: 48px;
+  padding-top: 15px;
+  font-size:   15px;
+  line-height: 18px;
+  width: 150px;
+  margin: auto;
+  margin-top: 15px;
+
+}
+.login-page input{
+  display: block;
+  border: 0;
+  height: 36px;
+  border-bottom: 1px solid $brand-white;
+  width: 300px;
+  margin: auto;
+  background: transparent;
+  margin-top:25px;
+
+  :focus{
+    border: 0;
+  }
+}
+
+.exhibition{
+  p{
+    padding-left: 30px;
+    padding-right: 30px;
+    line-height: 17pt;
+  }
+}
+
+.opera-heading{
+  position: absolute;
+  left: 10%;
+  top: 60%;
+  width: 80%;
+  text-align: left;
+  padding-top: 50px;
+  padding-left:15px;
+  min-height: 200px;
+  h1 {
+    font-weight: 400;
+    font-size: 14pt;
+    margin: 0;
+  }
+  h2{
+    margin: 0;
+    font-size: 14pt;
+  }
+  p{
+    font-size: 12pt;
+    font-weight: 300;
+    margin:0;
+    line-height: 12pt;
+  }
+
+  .navigation-icon-container{
+    position: absolute;
+    top: -23px;
+    right:25px;
+  }
+}
+
+.navigation-icon{
+  display         : inline-block;
+  border-radius   : 23px;
+  background-color: $brand-dark-grey;
+  color           : $brand-white;
+  height          : 46px;
+  line-height     : 46px;
+  width           : 46px;
+  text-align      : center;
+  margin-left     : 10px;
+  font-size       : 18pt;
+  font-weight     : 300;
+}
+.navigation-icon:focus{
+  border: 0;
+}
+
+.actions{
+  button{
+    border        : 0;
+    line-height   : 3px;
+    height        : 80px;
+    border-radius : 40px;
+    text-align    : center;
+    font-size     : 16pt;
+  }
+  button:focus {
+    border        : 0;
+  }
+}
+
+.drawing-icon.ending{
+  width   : 100%;
+  position:absolute;
+  bottom  : 25px;
+}
+
+
+.quiz{
+
+  p.quiz-popover{
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 30px;
+  }
+
+  .quiz-label{
+    padding-left:30px;
+    padding-right:30px;
+    margin-bottom:40px;
+
+    hr{
+      border-top    : 1px solid;
+      width         : 57px;
+      margin-top    : 35px;
+      margin-bottom : 35px;
+
+    }
+  }
+
+  .ending{
+    .navigation-icon{
+      margin-left   : 10px;
+    }
+  }
+
+  .quiz-question {
+
+  }
+  .answers{
+    button {
+      border: 1px solid $brand-dark-grey;
+    }
+    button.selected{
+      color: $brand-white;
+    }
+    button:focus{
+      border:0;
+    }
+  }
+  button:active, button:focus{
+    border:0;
+    outline:none;
+  }
+  button{
+    border        : 0;
+    display       : block;
+    height        : 50px;
+    font-size     : 13pt;
+    border-radius : 25px;
+    line-height   : 16px;
+    margin        : auto;
+    margin-bottom : 10px;
+    width         : 70%;
+    //color         : $brand-white;
+  }
+}
+
+.gold.quiz{
+  .quiz-label{
+    hr {
+      border-color: $brand-info
+    }
+  }
+  .answers{
+    button.selected{
+      color: $brand-white;
+    }
+    button.selected:nth-child(1){ background-color: shade($brand-info,   50); }
+    button.selected:nth-child(2){ background-color: shade($brand-info,   45); }
+    button.selected:nth-child(3){ background-color: shade($brand-info,   40); }
+    button.selected:nth-child(4){ background-color: shade($brand-info,   35); }
+    button.selected:nth-child(5){ background-color: shade($brand-info,   30); }
+    button.selected:nth-child(6){ background-color: shade($brand-info,   25); }
+    button.selected:nth-child(7){ background-color: shade($brand-info,   20); }
+    button.selected:nth-child(8){ background-color: shade($brand-info,   15); }
+    button.selected:nth-child(9){ background-color: shade($brand-info,   10); }
+    button.selected:nth-child(10){ background-color: shade($brand-info,  5); }
+  }
+
+  circle{
+    fill 	: 	$brand-info;
+  }
+
+  rect.quiz-popover{
+    fill    : $brand-info;
+  }
+}
+
+.quiz-starter{
+  width: 70px;
+  margin:auto;
+}
+
+
+.gold.opera-intro, .gold.quiz{
+
+  .quiz-starter{
+    path{
+      stroke: $brand-info;
+    }
+    text{
+      fill: $brand-info;
+    }
+  }
+
+  .actions{
+    button {
+      background    : $brand-info;
+      color         : $brand-white;
+    }
+  }
+}
+
+
+.dark-gold.quiz{
+  .quiz-label{
+    hr {
+      border-color: $brand-dark-gold
+    }
+  }
+  .answers{
+    button.selected:nth-child(1){ background-color: shade($brand-dark-gold,  50); }
+    button.selected:nth-child(2){ background-color: shade($brand-dark-gold,  45); }
+    button.selected:nth-child(3){ background-color: shade($brand-dark-gold,  40); }
+    button.selected:nth-child(4){ background-color: shade($brand-dark-gold,  35); }
+    button.selected:nth-child(5){ background-color: shade($brand-dark-gold,  30); }
+    button.selected:nth-child(6){ background-color: shade($brand-dark-gold,  25); }
+    button.selected:nth-child(7){ background-color: shade($brand-dark-gold,  20); }
+    button.selected:nth-child(8){ background-color: shade($brand-dark-gold,  15); }
+    button.selected:nth-child(9){ background-color: shade($brand-dark-gold,  10); }
+    button.selected:nth-child(10){ background-color: shade($brand-dark-gold, 5); }
+  }
+
+  circle{
+    fill 	: 	$brand-dark-gold;
+  }
+  rect.quiz-popover{
+    fill    : $brand-dark-gold;
+  }
+}
+
+.dark-gold.opera-intro, .dark-gold.quiz{
+
+  .quiz-starter{
+    path{
+      stroke: $brand-dark-gold;
+    }
+    text{
+      fill: $brand-dark-gold;
+    }
+  }
+
+  .actions{
+    button {
+      background    : $brand-dark-gold;
+      color         : $brand-white;
+    }
+  }
+}
+
+
+.purple.quiz{
+  .quiz-label{
+    hr {
+      border-color: $brand-dark-purple;
+    }
+  }
+  .answers{
+    button.selected:nth-child(1){ background-color: shade($brand-dark-purple, 50); }
+    button.selected:nth-child(2){ background-color: shade($brand-dark-purple, 45); }
+    button.selected:nth-child(3){ background-color: shade($brand-dark-purple, 40); }
+    button.selected:nth-child(4){ background-color: shade($brand-dark-purple, 35); }
+    button.selected:nth-child(5){ background-color: shade($brand-dark-purple, 30); }
+    button.selected:nth-child(6){ background-color: shade($brand-dark-purple, 25); }
+    button.selected:nth-child(7){ background-color: shade($brand-dark-purple, 20); }
+    button.selected:nth-child(8){ background-color: shade($brand-dark-purple, 15); }
+    button.selected:nth-child(9){ background-color: shade($brand-dark-purple, 10); }
+    button.selected:nth-child(10){ background-color: shade($brand-dark-purple, 5); }
+  }
+  circle{
+    fill 	: 	transparentize($brand-dark-purple, 0.25);
+  }
+  rect.quiz-popover{
+    fill    : $brand-dark-purple;
+  }
+
+  .quiz-popover-title{
+    text-transform: uppercase;
+    color   : $brand-white;
+  }
+
+  .quiz-popover-content{
+    color   : $brand-white;
+  }
+
+  .close-icon{
+    color   : $brand-white;
+    fill    : $brand-white;
+    font-size: 16pt;
+  }
+}
+
+.purple.opera-intro, .purple.quiz{
+  .quiz-starter{
+
+    path{
+      stroke: $brand-dark-purple;
+    }
+    text{
+      fill: $brand-dark-purple;
+    }
+  }
+
+  .actions{
+    button {
+      background    : $brand-dark-purple;
+      color         : $brand-white;
+    }
+  }
+}
+
+/*
+ * Typography
+ */
+.extra-light{
+  font-weight: 200;
+}
+.light {
+  font-weight: 300;
+}
+.regular{
+  font-weight: 400;
+}
+.semi-bold{
+  font-weight: 600;
+}
+.bold {
+  font-weight: 700;
+}
+.extra-bold{
+  font-weight: 800;
+}
+
+.vertical-center{
+  top:40%;
+  position: absolute;
+  width: 100%;
+}
+
+.achievements{
+
+  button.grey{
+    color: $brand-white;
+    background-color: $brand-dark-grey;
+    padding: 15px;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 35px;
+    border:0;
+  }
+  .number{
+    color : $brand-info;
+    font-size: 18pt;
+    font-weight: 300;
+    display: block;
+    line-height: 18pt;
+  }
+
+  .achievement-label{
+    color: $brand-dark-grey;
+    font-size: 12pt;
+    margin-bottom: 20px;
+  }
+
+  .purple{
+    circle{
+      fill: $brand-dark-purple;
+      stroke: $brand-dark-purple;
+    }
+    span{
+      font-size: 8px;
+      line-height: 10px;
+      color: $brand-dark-purple;
+    }
+  }
+
+  .dark-gold{
+    circle{
+      fill: $brand-dark-gold;
+      stroke: $brand-dark-gold;
+    }
+    span{
+      color: $brand-dark-gold;
+      font-size: 8px;
+      line-height: 10px;
+    }
+  }
+
+  .gold{
+    circle{
+      fill: $brand-info;
+      stroke: $brand-info;
+    }
+    span{
+      color: $brand-info;
+      font-size: 8px;
+      line-height: 10px;
+    }
+  }
+
+  circle.active{
+    fill:none;
+    stroke-width:1;
+    stroke-miterlimit:10;
+  }
+
+  line{
+    fill:none;
+    stroke:#111111;
+    stroke-width:1;
+    stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;
+  }
+}
+
+footer{
+  .index-nav{
+    border: 1px solid $brand-info;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 25px;
+    font-size: 24pt;
+  }
+  .index-nav:nth-child(2){
+    font-family: 'Georgia';
+  }
+}
+
+.routes .links{
+
+  li{
+    height: 40px;
+  }
+
+  button{
+    height: 30px;
+    line-height: 30px;
+    border-radius: 15px;
+    width: 30px;
+    border: 0;
+    font-size:12px;
+    padding:0;
+  }
+
+  button:focus{
+    border: 0;
+  }
+
+  .purple button{
+    color: $brand-white;
+    background: $brand-dark-purple;
+  }
+  .gold button{
+    background: $brand-info;
+    color: $brand-white;
+  }
+  .dark-gold button{
+    background: $brand-dark-gold;
+    color: $brand-white;
+  }
+}
+
+.menu.links li{
+  padding-top:15px;
+}
+
+.percorso-preview{
+  padding: 15px;
+
+  .opera-preview{
+
+    width:40%;
+    margin: 10px;
+    display:inline-block;
+
+    img{
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+  /*
+  .opera-preview {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+  .opera-title{
+    background: $brand-white;
+    font-size: 24px;
+    line-height: 46px;
+    padding: 0;
+    margin:0;
+    margin-bottom: 10px;
+
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-left: 1px solid;
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+    .navigation-icon{
+      float: right;
+    }
+  }
+  */
+}
+
+.percorso-preview.purple .opera-title{
+  border-color: $brand-dark-purple;
+}
+
+.percorso-preview.gold .opera-title{
+  border-color: $brand-info;
+}
+.percorso-preview.dark-gold .opera-title{
+  border-color: $brand-dark-gold;
+}
+
+.percorso-completed{
+
+  .percorso-icon{
+    width: 30%;
+    margin-bottom: 15px;
+  }
+  .completed-label{
+    text-transform: uppercase;
+    font-size: 16px;
+    line-height:21px;
+    margin:auto;
+    margin-bottom: 30px;
+    width: 80%;
+  }
+
+  .share-icon{
+    border: 1px solid;
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    line-height: 40px;
+    font-size: 22px;
+    margin:auto;
+  }
+
+  .opera-share{
+    margin-bottom:15px;
+
+    p{
+      margin-bottom: 10px;
+    }
+    .opera-preview{
+      width: 60px;
+      display:inline-block;
+      margin-right: 10px;
+
+      img{
+        width: 100%;
+        object-fit: contain;
+      }
+    }
+    .opera-preview:last-child{
+      margin-right: 0;
+    }
+  }
+
+  .navigation-icon{
+    margin: 0;
+  }
+}
+
+.overlay{
+  z-index: 9999;
+  position: absolute;
+  top:0;
+  bottom:0;
+  height:100%;
+  width: 100%;
+  background-color: transparentize($brand-primary, 0.25);
+
+  .login-box{
+    padding: 15px;
+    background-color: $brand-white;
+    margin-top:35%;
+  }
+}
